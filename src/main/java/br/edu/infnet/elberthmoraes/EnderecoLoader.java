@@ -5,22 +5,22 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.elberthmoraes.clients.IEnderecoClient;
 import br.edu.infnet.elberthmoraes.model.domain.Endereco;
 import br.edu.infnet.elberthmoraes.model.service.EnderecoService;
+import br.edu.infnet.elberthmoraes.model.service.LocalidadeService;
 
 @Component
 public class EnderecoLoader implements ApplicationRunner {
 
 	@Autowired
-	private IEnderecoClient enderecoClient;
+	private LocalidadeService localidadeService;
 	@Autowired
 	private EnderecoService enderecoService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		Endereco enderecoInfnet = enderecoClient.obterPorCep("22241900");
+		Endereco enderecoInfnet = localidadeService.obterPorCep("22241900");
 
 		enderecoService.incluir(enderecoInfnet);
 

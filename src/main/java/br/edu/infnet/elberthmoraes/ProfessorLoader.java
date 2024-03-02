@@ -8,20 +8,21 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.elberthmoraes.clients.IEnderecoClient;
 import br.edu.infnet.elberthmoraes.model.domain.Endereco;
 import br.edu.infnet.elberthmoraes.model.domain.Professor;
+import br.edu.infnet.elberthmoraes.model.service.LocalidadeService;
 import br.edu.infnet.elberthmoraes.model.service.ProfessorService;
 
 @Component
 public class ProfessorLoader implements ApplicationRunner {
 
 	@Autowired
-	private IEnderecoClient enderecoClient;
+	private LocalidadeService localidadeService;
 	@Autowired
 	private ProfessorService professorService;
 		
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		Endereco enderecoProfessor = enderecoClient.obterPorCep("20041-005");
+		Endereco enderecoProfessor = localidadeService.obterPorCep("20041-005");
 
 		professorService.incluir(new Professor());
 

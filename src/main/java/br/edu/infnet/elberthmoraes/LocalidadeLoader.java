@@ -23,8 +23,8 @@ public class LocalidadeLoader implements ApplicationRunner {
 
 		Collection<Estado> estados = localidadeService.obterEstados();
 		
-		for(Estado estado : estados) {
-			System.out.println("- ESTADO: " + estado.getNome());
+		//for(Estado estado : estados) {
+		//	System.out.println("- ESTADO: " + estado.getNome());
 			
 			Collection<Municipio> municipios = localidadeService.obterMunicipioPorUF(33);//estado.getId());
 			
@@ -37,7 +37,6 @@ public class LocalidadeLoader implements ApplicationRunner {
 					System.out.println("... DISTRITO: " + distrito.getNome());
 				}
 			}
-		}
-		
+		//}		
 	}
 }

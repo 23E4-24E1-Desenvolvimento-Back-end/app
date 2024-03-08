@@ -4,8 +4,6 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import br.edu.infnet.elberthmoraes.clients.IEnderecoClient;
 import br.edu.infnet.elberthmoraes.clients.ILocalidadeClient;
@@ -23,23 +21,19 @@ public class LocalidadeService {
 	@Autowired
 	private IEnderecoClient enderecoClient;
 	
-	@GetMapping(value = "/{cep}/json/")
-	public Endereco obterPorCep(@PathVariable String cep) {
+	public Endereco obterPorCep(String cep) {
 		return enderecoClient.obterPorCep(cep);
 	}
 	
-	@GetMapping(value = "/estados?orderBy=nome")
 	public Collection<Estado> obterEstados(){
 		return localidadeClient.obterEstados();
 	}
 
-	@GetMapping(value = "/estados/{uf}/municipios")
-	public Collection<Municipio> obterMunicipioPorUF(@PathVariable Integer uf){
+	public Collection<Municipio> obterMunicipioPorUF(Integer uf){
 		return localidadeClient.obterMunicipioPorUF(uf);
 	}
 	
-	@GetMapping(value = "/municipios/{municipio}/distritos")
-	public Collection<Distrito> obterDistritoPorMunicipio(@PathVariable Integer municipio){
+	public Collection<Distrito> obterDistritoPorMunicipio(Integer municipio){
 		return localidadeClient.obterDistritoPorMunicipio(municipio);
 	}
 }

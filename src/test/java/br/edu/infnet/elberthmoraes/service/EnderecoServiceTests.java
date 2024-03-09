@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.edu.infnet.elberthmoraes.model.domain.Endereco;
-import br.edu.infnet.elberthmoraes.model.domain.Escola;
 import br.edu.infnet.elberthmoraes.model.service.EnderecoService;
 
 @SpringBootTest
@@ -30,23 +29,23 @@ public class EnderecoServiceTests {
 	@Test
 	void inclusao() {
 		
-		enderecoService.incluir(endereco);
+		enderecoService.incluir(endereco);//id=1
 		
-		assertEquals(endereco, enderecoService.obter(CEP));
+		assertEquals(endereco, enderecoService.obter(1));
 	}
 	
 	@Test
 	void exclusao() {
-		inclusao();
+		inclusao();//id=2
 		
-		enderecoService.excluir(CEP);
+		enderecoService.excluir(1);
 		
-		assertEquals(null, enderecoService.obter(CEP));		
+		assertEquals(null, enderecoService.obter(1));		
 	}
 	
 	@Test
 	void recuperacaoTotal() {
-		inclusao();
+		inclusao();//id=3
 		
 		assertTrue(enderecoService.obterLista().contains(endereco));
 	}

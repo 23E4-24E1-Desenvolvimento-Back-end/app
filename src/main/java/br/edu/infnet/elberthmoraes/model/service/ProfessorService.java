@@ -1,31 +1,32 @@
 package br.edu.infnet.elberthmoraes.model.service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.elberthmoraes.model.domain.Professor;
+import br.edu.infnet.elberthmoraes.model.repository.ProfessorRepository;
 
 @Service
 public class ProfessorService {
 
-	private static Map<Integer, Professor> professores = new HashMap<Integer, Professor>(); 
+	@Autowired
+	private ProfessorRepository professorRepository;
 	
 	public void incluir(Professor professor) {
-		professores.put(professor.getRegistro(), professor);
+		professorRepository.save(professor);
 	}
 	
 	public void excluir(int registro) {
-		professores.remove(registro);
+		//professores.remove(registro);
 	}
 	
 	public Collection<Professor> obterLista(){
-		return professores.values();
+		return null;//professores.values();
 	}
 	
 	public Professor obter(int registro){
-		return professores.get(registro);
+		return null;//professores.get(registro);
 	}
 }

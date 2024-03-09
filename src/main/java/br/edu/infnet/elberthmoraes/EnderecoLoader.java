@@ -22,20 +22,20 @@ public class EnderecoLoader implements ApplicationRunner {
 
 		Endereco enderecoInfnet = localidadeService.obterPorCep("22241900");
 
-		enderecoService.incluir(enderecoInfnet);
+		enderecoService.incluir(enderecoInfnet);//id=1
 
-		enderecoService.excluir("22241900");
+		enderecoService.excluir(1);
 
 		Endereco e1 = new Endereco();
 		e1.setCep("12345678");
 		e1.setLogradouro("logradouro");
 		e1.setBairro("bairro");
 
-		enderecoService.incluir(e1);
+		enderecoService.incluir(e1);//id=2
 
-		System.out.println(" - " + enderecoService.obter("12345678"));
+		System.out.println(" - " + enderecoService.obter(2));
 
-		enderecoService.incluir(enderecoInfnet);
+		enderecoService.incluir(enderecoInfnet);//id=3
 
 		System.out.println(" - " + enderecoService.obterLista());
 	}

@@ -1,11 +1,22 @@
 package br.edu.infnet.elberthmoraes.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class Professor {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private int registro;
 	private String nome;
 	private float salario;
 	private boolean mestre;
+	@Transient
 	private Endereco endereco;
 	
 	public Professor() {
@@ -38,30 +49,45 @@ public class Professor {
 	
 	@Override
 	public String toString() {
-		return "Professor: " + registro + " - " + nome + " - " + salario + " - " + mestre + " - " + endereco;
-	}	
+		return "Professor: " + id + " - " + registro + " - " + nome + " - " + salario + " - " + mestre + " - " + endereco;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public int getRegistro() {
 		return registro;
 	}
+
 	public void setRegistro(int registro) {
 		this.registro = registro;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public float getSalario() {
 		return salario;
 	}
+
 	public void setSalario(float salario) {
 		this.salario = salario;
 	}
+
 	public boolean isMestre() {
 		return mestre;
 	}
+
 	public void setMestre(boolean mestre) {
 		this.mestre = mestre;
 	}
@@ -72,5 +98,5 @@ public class Professor {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}
+	}	
 }
